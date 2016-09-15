@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body ng-controller="mainCtrl">
+
+<button type="button" name="button" ng-click="nextPage()">Next Page</button>
+
+<ul ng-repeat="beer in beers">
+  <li>{{beer.name}}</li>
+  <li>{{beer.abv}}</li>
+  <li>{{beer.description}}</li>
+  <li>{{beer.glass.name}}</li>
+  <li>{{beer.isOrganic}}</li>
+  <li style="'background-color': '520907'">{{beer.srm.name}}</li>
+  <li>{{beer.style.}}</li>
+  <li>{{beer.style.}}</li>
+  <li>{{beer.style.}}</li>
+  <li>{{beer.style.}}</li>
+  <li>{{beer.style.}}</li>
+  <li>{{beer.style.}}</li>
+
+</ul>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+<script src="./controllers/appCtrl.js"></script>
+<script src="./controllers/appService.js"></script>
+<script src="./controllers/mainCtrl.js"></script>
+  </body>
+</html>
