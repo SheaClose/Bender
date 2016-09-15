@@ -1,33 +1,54 @@
 <!DOCTYPE html>
 <html ng-app="app">
   <head>
-    <meta charset="utf-8">
-    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Poller+One" rel="stylesheet">
+    <meta charset='utf-8' />
+    <title>Beer Locator</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.23.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.23.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:50%; height:50% }
+    </style>
   </head>
+
   <body ng-controller="mainCtrl">
 
-<button type="button" name="button" ng-click="getBeers()">Next Page</button>
 
-<ul ng-repeat="beer in beers">
-  <li ng-show=toggle({{beer.name}})>Name: {{beer.name}}</li>
-  <li ng-show=toggle({{beer.abv}})>ABV: {{beer.abv}}</li>
-  <li ng-show=toggle({{beer.description}})>Description: {{beer.description}}</li>
-  <li ng-show=toggle({{beer.glass.name}})>Serving Glass: {{beer.glass.name}}</li>
-  <li ng-show=toggle({{beer.isOrganic}})>Organic? : {{beer.isOrganic}}</li>
-  <li ng-show=toggle({{beer.srm.name}})>Beer Color: {{beer.srm.name}}</li>
-  <!-- <li>{{beer.style.}}</li>
-  <li>{{beer.style.}}</li>
-  <li>{{beer.style.}}</li>
-  <li>{{beer.style.}}</li>
-  <li>{{beer.style.}}</li>
-  <li>{{beer.style.}}</li> -->
 
-</ul>
+<!-- Body View -->
+    <ui-view></ui-view>
+
+
+
+
+
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
-<script src="./controllers/appCtrl.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+<script src="./js/controllers/appCtrl.js"></script>
 <script src="./controllers/appService.js"></script>
 <script src="./controllers/mainCtrl.js"></script>
-  </body>
+<script src="./js/controllers/beerhomectrl.js"></script>
+<script src="./js/controllers/beerlistctrl.js"></script>
+<script src="./js/controllers/breweryhomectrl.js"></script>
+<script src="./js/controllers/brewerylistCtrl.js"></script>
+<script src="./js/controllers/homeCtrl.js"></script>
+<script src="./js/controllers/mapctrl.js"></script>
+<script src="./js/controllers/styleListCtrl.js"></script>
+<script src="./js/directives/beerhomedirective.js"></script>
+<script src="./js/directives/breweryhomedirective.js"></script>
+<script src="./js/directives/homedirective.js"></script>
+<script src="./js/directives/listsDirective.js"></script>
+<script src="./js/directives/listsDirective.js"></script>
+<script src="./js/services/beerservices.js"></script>
+<script src="./js/services/breweryservices.js"></script>
+<script src="./js/services/homeservices.js"></script>
+<script src="./js/services/mapservices.js"></script>
+<script src="./js/services/styleservices.js"></script>
+<script src="./js/directives/navBar.js"></script>
+    </body>
 </html>
