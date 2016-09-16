@@ -14,7 +14,6 @@ angular.module("app")
     }).then(function(response){
       var responseArr = response.data.data;
       for (var i = 0; i < responseArr.length; i++){
-        console.log(responseArr[i]);
         if(responseArr[i].status = "verified"){
             breweryArr.push(responseArr[i])
         }
