@@ -1,33 +1,43 @@
 angular.module("app")
 .controller("mapCtrl", function($scope, mapService){
-  $scope.breweryId = [];
-  $scope.allLatLng = [];
-  $scope.allMarkers = [];
-  $scope.breweryName = [];
-  $scope.infoWindow = []
-  $scope.pos;
-  $scope.userCords;
-  $scope.tempMarkerHolder = [];
-  $scope.centerMap = "";
-  var baseUrl = "https://www.google.com/maps/embed/v1/place?q=";
-  var key =  "&key=AIzaSyCIdWvV8D7BDxSAOzFP8A5lJUrVoENki30";
-$scope.test = "All clear"
 
+$scope.map = {
+    center: {latitude: 0, longitude: 0 }
+  , zoom: 1 };
+  $scope.marker = {
+    coords: {
+      latitude: 30,
+      longitude: -73,
+    }
+  }
+  // $scope.markerList=[{
+  //   coords: {
+  //     latitude: 10,
+  //     longitude: -73,
+  //   }
+  // },{
+  //   coords: {
+  //     latitude: 31,
+  //     longitude: -73,
+  //   }
+  // },{
+  //   coords: {
+  //     latitude: 45,
+  //     longitude: -73,
+  //   }
+  // }]
 
-  // if (navigator.geolocation) {
-  //   function error(err){
-  //     console.log(err.code);
-  //   }
-  //   function success(pos){
-  //     var userLat = pos.coords.latitude;
-  //     var userLng = pos.coords.longitude;
-  //     console.log(userLat, userLng)
-  //     // $scope.centerMap = baseUrl + userLat + "," + userLng + key;
-  //     $scope.map = { center: { latitude: userLat, longitude: userLng }, zoom: 8 };
-  //     console.log($scope.centerMap)
-  //   }
-  //   navigator.geolocation.getCurrentPosition(success, error);
-  // }
+  if (navigator.geolocation) {
+    function error(err){
+    }
+    function success(pos){
+      var userLat = pos.coords.latitude;
+      var userLng = pos.coords.longitude;
+      $scope.map = { center: { latitude: userLat, longitude: userLng }, zoom: 15 };
+    }
+    navigator.geolocation.getCurrentPosition(success, error);
+  }
+
 
 
 

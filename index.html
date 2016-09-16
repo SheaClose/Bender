@@ -8,10 +8,6 @@
   </head>
   <body ng-controller="mainCtrl">
 
-    <div style="height:100px;width:100px;"id="map_canvas" ng-controller="mainCtrl">
-        <ui-gmap-google-map center="{latitude: 51.219053, longitude: 4.404418 }" zoom="map.zoom" options="options"></ui-gmap-google-map>
-    </div>
-
 <!-- Body View -->
     <ui-view></ui-view>
 
@@ -26,7 +22,6 @@
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAXQB6_1o2TlMK7coZPgfuVDAdxZtPiv9c"></script>
 </script>
 <script src='./lodash/lodash.js'></script>
-<!-- <script src='./angular/angular.js'></script> -->
 <script src='./angular-simple-logger/dist/angular-simple-logger.js'></script>
 <script src='./angular-google-maps/dist/angular-google-maps.js'></script>
 <script src="./js/controllers/appCtrl.js"></script>

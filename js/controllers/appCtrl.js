@@ -14,7 +14,6 @@ angular.module("app", ['ui.router', 'uiGmapgoogle-maps'])
   .state("mapView", {
       url: "/map"
     , templateUrl: "./views/map.html"
-    // , controller: "mapCtrl"
   })
   .state("browseBeers", {
       url: "/browseBeers"
