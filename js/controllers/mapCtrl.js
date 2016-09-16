@@ -1,5 +1,5 @@
 angular.module("app")
-.controller("mapCtrl", function($scope, mapService){
+.controller("mapCtrl", function($scope, $state, mapService){
   //prevents map from showing up until information is obtained.
   $scope.mapRefresh = false;
   //array to store marker information in.
@@ -8,7 +8,7 @@ angular.module("app")
   $scope.refresh = function(){
     $scope.mapRefresh = !$scope.mapRefresh
   };
-  //obtains geolocation of the user, immediately populates map with local breweries.
+  //obtains geolocation of the user in order to populate map with local breweries.
   if (navigator.geolocation) {
     function error(err){
       alert("Please input Zipcode to locate local breweries.")
@@ -16,23 +16,23 @@ angular.module("app")
     function success(pos){
       var userLat = pos.coords.latitude;
       var userLng = pos.coords.longitude;
-      $scope.map = { center: { latitude: userLat, longitude: userLng }, zoom: 12 };
+      $scope.map = { center: { latitude: userLat, longitude: userLng }, zoom: 15 };
       $scope.homeMarker = {
         coords: {
           latitude: userLat,
           longitude: userLng,
         }
-        ,id: 99
+        , id: 99
+        , options: {opacity: .5}
       }
       $scope.getBreweryByLoc(userLat, userLng);
     }
     navigator.geolocation.getCurrentPosition(success, error)
   }
-///
+//http request for breweries based on geolaction info.
   $scope.getBreweryByLoc = function (lat, long) {
     mapService.getBreweryByLoc(lat, long).then(function(response){
       $scope.localbreweries = response;
-      console.log(response)
       var breweryObj = {};
       for (var i = 0; i < response.length; i++){
         breweryObj = {
@@ -41,21 +41,20 @@ angular.module("app")
             , longitude: response[i].longitude
           }
           , id: i
-          , message: response[i].brewery.name
+          , message: "Brewery Name: " + response[i].brewery.name + " | Distance: " + response[i].distance
+          , distance: response[i].distance
+          , name: response[i].brewery.name
+          , bId: response[i].breweryId
         }
         $scope.markerList.push(breweryObj);
-        console.log(breweryObj)
         breweryObj = {};
       }
       $scope.refresh()
     })
   }
-  // $scope.markerList=[{
-  //   coords: {
-  //   latitude: 33.782182,
-  //   longitude: -96.797557
-  // }
-  // , id: 2
-  // , message: "This is a test Message!"
-  // }
+// changes page to brewery passing in brewery id
+  $scope.goToBreweryPage = function(arg){
+    $state.go("brewery", {bId: arg})
+  }
+
 })

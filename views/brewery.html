@@ -1,0 +1,10 @@
+<nav-bar></nav-bar>
+<h1>This is the Breweries Information Page!</h1>
+
+
+<ul ng-repeat="beer in beerList">
+  <li>Name: {{beer.name}}</li>
+  <li>Style: {{beer.style.shortName}}</li>
+  <li>Description: {{beer.style.description}}</li>
+  <li>ABV Range: {{beer.style.abvMin}}-{{beer.style.abvMax}}</li>
+</ul>

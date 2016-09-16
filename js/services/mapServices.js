@@ -12,9 +12,10 @@ angular.module("app")
         method: "GET"
       , url: beerBaseUrl + lat + "&lng=" + long + "&" + beerApiKey
     }).then(function(response){
+      console.log(response)
       var responseArr = response.data.data;
       for (var i = 0; i < responseArr.length; i++){
-        if(responseArr[i].status = "verified"){
+        if(responseArr[i].status === "verified" && responseArr[i].openToPublic === "Y"){
             breweryArr.push(responseArr[i])
         }
       }

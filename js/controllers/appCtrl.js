@@ -28,4 +28,9 @@ angular.module("app", ['ui.router', 'uiGmapgoogle-maps'])
       url: "/browseBeerStyles"
     , templateUrl: "./views/browseBeerStyles.html"
   })
+  .state("brewery", {
+      url: "/brewery/:bId"
+    , templateUrl: "views/brewery.html"
+    , controller: "breweryHomeCtrl"
+  })
 })
