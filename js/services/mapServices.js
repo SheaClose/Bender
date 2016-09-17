@@ -8,7 +8,7 @@ angular.module("app")
 //obtains local breweries and verifies the information prior to passing along to MapCtrl
   this.getBreweryByLoc = function(lat, long){
     var breweryArr = [];
-    return $https({
+    return $http({
         method: "GET"
       , url: beerBaseUrl + lat + "&lng=" + long + "&" + beerApiKey
     }).then(function(response){
