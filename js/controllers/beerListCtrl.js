@@ -1,5 +1,5 @@
 angular.module("app")
-.controller("beerListCtrl", function($scope, appService, beerServices, styleServices){
+.controller("beerListCtrl", function($scope, beerServices, styleServices){
     $scope.getBeers = function (arg) {
       beerServices.getBeers(arg).then(function(response){
         $scope.beers = response;
