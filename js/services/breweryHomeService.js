@@ -6,7 +6,7 @@ angular.module("app")
   var beersUrl = "/beers?";
 
   this.getBreweryInfo = function(id){
-    return $http.get(beerBaseUrl + id + beersUrl + beerApiKey).then(function(response){
+    return $https.get(beerBaseUrl + id + beersUrl + beerApiKey).then(function(response){
       if (response.data.data){
       var beerArr = response.data.data;
       var beerList = [];
@@ -23,13 +23,13 @@ angular.module("app")
     })
   }
   this.getBrewery = function(id){
-    return $http.get(beerBaseUrl + id + "?" + beerApiKey).then(function(response){
+    return $https.get(beerBaseUrl + id + "?" + beerApiKey).then(function(response){
       // console.log(response.data.data)
       return response.data.data;
     })
   }
   this.selectABeer = function(beerId){
-    return $http.get(baseUrl + "beer/" + beerId + "?" + beerApiKey).then(function(response){
+    return $https.get(baseUrl + "beer/" + beerId + "?" + beerApiKey).then(function(response){
       return response;
     })
   }
