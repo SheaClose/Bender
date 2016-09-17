@@ -15,8 +15,8 @@ angular.module("app")
         method: "GET"
       , url: baseUrl + "styles/?" + apiKey
     }).then(function(response){
-      console.log(response);
       return response.data.data;
     })
   };
+
 })

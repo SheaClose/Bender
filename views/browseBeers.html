@@ -5,15 +5,24 @@
   <div>
 
     <!-- beer list -->
-    <div class="col-md-1 col-lg-1">
-<!-- {{beers}} -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <button type="button " name="button" class="btn btn-default" ng-click="getBeers('previousPage')">Prev Page</button>
+        <button class="btn btn-default" type="button" name="button" ng-click="getBeers()">Next Page</button>
+      </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-right">
+          <input type="form" name="name" placeholder="Search by beer name" value="" ng-model="beerSearch">
+          <button type="button" name="button" class="btn btn-default" ng-click="searchByBeerName(beerSearch)">Submit</button>
+
+    <!-- {{beers}} -->
+        </div>
+      </div>
     </div>
 
 
 
-
     <!-- image on landing/ beer list after query -->
-    <div class="col-md-10 col-lg-10 pull-right">
+    <div ng-if='beerList'class="row">
       <div class="" ng-repeat="beer in beers">
         <div class="beer-Container col-md-3 col-lg-3">
           <div class="Beer-Name">
@@ -35,6 +44,43 @@
         </div>
         <hr>
       </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="row" ng-if="beerInfo">
+      <div class="jumbotron">
+        <img   ng-src="{{searchedBeer.labels.large}}" alt="" />
+        <h1>{{searchedBeer.name}}</h1>
+        <div class=""> {{searchedBeer.description}}
+        </div>
+      </div>
+      <div ng-if="beerInfo">
+        <div class="">
+          organic? {{searchedBeer.isOrganic}}
+        </div>
+
+        <div class="">
+          style:
+          <br>
+          <ul>
+            <li>abv max:    {{searchedBeer.style.abvMax}}</li>
+            <li>abvMin: {{searchedBeer.style.abvMin}}</li>
+            <li>desc: {{searchedBeer.style.description}}</li>
+            <li>fgMax: {{searchedBeer.style.fgMax}}</li>
+            <li>fgMin: {{searchedBeer.style.fgMin}}</li>
+            <li>ibuMax: {{searchedBeer.style.ibuMax}}</li>
+            <li>srmMax: {{searchedBeer.style.srmMax}}</li>
+            <li>srmMin: {{searchedBeer.style.srmMin}}</li>
+          </ul>
+        </div>
+
+      </div>
+
     </div>
   </div>
 </div>
