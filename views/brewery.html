@@ -1,10 +1,39 @@
 <nav-bar></nav-bar>
-<h1>This is the Breweries Information Page!</h1>
+<style media="screen">
+  .breweryPic { height: 550px;   margin-top: 35px; overflow: auto
+  }
+[ng-click]{
+  cursor: pointer;
+}
+.red {
+    background-color: red;
+}
+.header {
+  text-align: center;
+}
+</style>
+<div class="header">
+    <h1>{{brewery.nameShortDisplay}}</h1>
+</div>
 
 
-<ul ng-repeat="beer in beerList">
-  <li>Name: {{beer.name}}</li>
-  <li>Style: {{beer.style.shortName}}</li>
-  <li>Description: {{beer.style.description}}</li>
-  <li>ABV Range: {{beer.style.abvMin}}-{{beer.style.abvMax}}</li>
-</ul>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-3 col-lg-3 breweryPic">
+      <ul ng-class="red" ng-repeat="beer in beerList">
+        <div
+          ng-class="{red: hover}"
+          ng-mouseenter="hover = true"
+          ng-mouseleave="hover = false">
+        <li>Name: {{beer.name}}</li>
+        <li>Style: {{beer.style.shortName}}</li>
+        <!-- <li>Description: {{beer.style.description}}</li> -->
+        <li>ABV Range: {{beer.style.abvMin}}-{{beer.style.abvMax}}</li>
+        <hr>
+
+      </div>
+    </ul>
+    </div>
+    <div class="col-sm-8 col-md-8 col-lg-8 pull-right breweryPic">
+        <img ng-if="{{breweryInfo}}" ng-src="{{brewery.images.squareLarge}}" alt="" />
+    </div>
