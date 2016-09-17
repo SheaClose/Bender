@@ -12,7 +12,10 @@ angular.module("app", ['ui.router', 'uiGmapgoogle-maps'])
     , templateUrl: "./views/home.html"
   })
   .state("mapView", {
-      url: "/map"
+      url: "/map/:lat/:lng"
+  //   , params: [
+  //    'lat', 'long'
+  // ]
     , templateUrl: "./views/map.html"
   })
   .state("browseBeers", {

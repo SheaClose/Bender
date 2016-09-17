@@ -7,13 +7,15 @@
 
     <form class="navbar-form navbar-left">
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Find by Zipcode">
+        <input ng-model="zipCodeInput" type="text" class="form-control" placeholder="Find by Zipcode">
       </div>
-      <a type="submit" class="btn btn-default" ui-sref="mapView">Submit</a>
+      <a type="submit" class="btn btn-default" ng-click="searchByZipcode(zipCodeInput)">Submit</a>
+
     </form>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="navbar-right">
       <ul class="nav navbar-nav">
+        <li><a ui-sref="mapView">Browse By Area</a></li>
         <li><a ui-sref="browseBeers">Browse Beers</a></li>
         <li><a ui-sref="browseBreweries">Browse Breweries</a></li>
         <li><a ui-sref="browseBeerStyles"> Browse Styles    </a></li>

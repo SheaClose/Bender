@@ -1,5 +1,5 @@
 angular.module("app")
-.controller("mapCtrl", function($scope, $state, mapService){
+.controller("mapCtrl", function($scope, $state, $stateParams, mapService){
   //prevents map from showing up until information is obtained.
   $scope.mapRefresh = false;
   //array to store marker information in.
@@ -9,13 +9,21 @@ angular.module("app")
     $scope.mapRefresh = !$scope.mapRefresh
   };
   //obtains geolocation of the user in order to populate map with local breweries.
-  if (navigator.geolocation) {
+  $scope.launch = function() {
     function error(err){
       alert("Please input Zipcode to locate local breweries.")
     }
     function success(pos){
-      var userLat = pos.coords.latitude;
-      var userLng = pos.coords.longitude;
+      var userLat = "";
+      var userLng = "";
+      if ($stateParams.lat === ""){
+      userLat = pos.coords.latitude;
+      userLng = pos.coords.longitude;
+    }
+    else {
+      userLat = $stateParams.lat;
+      userLng = $stateParams.lng;
+    }
       $scope.map = { center: { latitude: userLat, longitude: userLng }, zoom: 15 };
       $scope.homeMarker = {
         coords: {
@@ -56,5 +64,5 @@ angular.module("app")
   $scope.goToBreweryPage = function(arg){
     $state.go("brewery", {bId: arg})
   }
-
+$scope.launch();
 })
