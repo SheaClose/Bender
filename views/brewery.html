@@ -1,19 +1,20 @@
 <nav-bar></nav-bar>
 <style media="screen">
-  .breweryPic { height: 550px;   margin-top: 35px; overflow: auto
-  }
+.breweryPic { height: 550px;   margin-top: 35px; overflow: auto
+}
 [ng-click]{
-  cursor: pointer;
+cursor: pointer;
 }
 .red {
-    background-color: red;
+background-color: red;
 }
 .header {
-  text-align: center;
+text-align: center;
 }
+
 </style>
 <div class="header">
-    <h1>{{brewery.nameShortDisplay}}</h1>
+  <h1>{{brewery.nameShortDisplay}}</h1>
 </div>
 
 
@@ -21,23 +22,49 @@
   <div class="row">
     <div class="col-sm-3 col-md-3 col-lg-3 breweryPic">
       <ul ng-class="red" ng-repeat="beer in beerList" ng-click="selectABeer(beer.id)">
-        <div
-          ng-class="{red: hover}"
-          ng-mouseenter="hover = true"
-          ng-mouseleave="hover = false">
+      <div
+      ng-class="{red: hover}"
+      ng-mouseenter="hover = true"
+      ng-mouseleave="hover = false">
         <li>Name: {{beer.name}}</li>
         <li>Style: {{beer.style.shortName}}</li>
-        <!-- <li>Description: {{beer.style.description}}</li> -->
-      
+  <!-- <li>Description: {{beer.style.description}}</li> -->
+
         <li>ABV Range: {{beer.style.abvMin}}-{{beer.style.abvMax}}</li>
         <hr>
 
       </div>
-    </ul>
+      </ul>
     </div>
     <div class="col-sm-8 col-md-8 col-lg-8 pull-right breweryPic">
-        <img ng-if="breweryImg" ng-src="{{brewery.images.squareLarge}}" alt="" />
-        <div ng-if="beerInfo" class="">
-          <h1>{{selectedBeer.description}}</h1>
+      <img ng-if="breweryImg" ng-src="{{brewery.images.squareLarge}}" alt="" />
+      <div ng-if="beerInfo" class="jumbotron">
+        <img   ng-src="{{selectedBeer.labels.large}}" alt="" />
+        <h1>{{selectedBeer.name}}</h1>
+        <div class=""> {{selectedBeer.description}}
         </div>
+      </div>
+      <div ng-if="beerInfo">
+        <div class="">
+          organic? {{selectedBeer.isOrganic}}
+        </div>
+
+        <div class="">
+          style:
+          <br>
+          <ul>
+            <li>abv max:    {{selectedBeer.style.abvMax}}</li>
+            <li>abvMin: {{selectedBeer.style.abvMin}}</li>
+            <li>desc: {{selectedBeer.style.description}}</li>
+            <li>fgMax: {{selectedBeer.style.fgMax}}</li>
+            <li>fgMin: {{selectedBeer.style.fgMin}}</li>
+            <li>ibuMax: {{selectedBeer.style.ibuMax}}</li>
+            <li>srmMax: {{selectedBeer.style.srmMax}}</li>
+            <li>srmMin: {{selectedBeer.style.srmMin}}</li>
+          </ul>
+        </div>
+
+      </div>
     </div>
+  </div>
+</div>

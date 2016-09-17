@@ -1,11 +1,40 @@
 <nav-Bar></nav-Bar>
+<style media="screen">
+</style>
 <div class="container">
   <div>
-    <div class="col-md-1 col-lg-1">
 
+    <!-- beer list -->
+    <div class="col-md-1 col-lg-1">
+<!-- {{beers}} -->
     </div>
+
+
+
+
+    <!-- image on landing/ beer list after query -->
     <div class="col-md-10 col-lg-10 pull-right">
-      <img  src="https://1ep6828c02w1hbogs422wha1-wpengine.netdna-ssl.com/wp-content/uploads/2016/04/Craft-Beer-1647_propped_OV2-450x450.jpg" alt="" />
+      <div class="" ng-repeat="beer in beers">
+        <div class="beer-Container col-md-3 col-lg-3">
+          <div class="Beer-Name">
+          <h4>Beer Name:  {{beer.name}}</h4>
+          </div>
+          <div class="beer-Description">
+          Description:  {{beer.shortDesc}}
+          <!-- 250 chars MAX -->
+          </div>
+          <div class="abv">
+          ABV:  {{beer.abv}}
+          </div>
+          Beer Color:
+           <div
+            <div style="width: 100px; height: 100px; background-color: #{{beer.hex}}"class="color">
+
+            </div>
+          </div>
+        </div>
+        <hr>
+      </div>
     </div>
   </div>
 </div>

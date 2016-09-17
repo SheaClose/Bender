@@ -1,17 +1,13 @@
 angular.module('app')
 .controller("breweryHomeCtrl", function($scope, $state, mapService, breweryHomeService){
-  // console.log($state.params.bId)
 
   function getBreweryInfo(arg){
     breweryHomeService.getBreweryInfo(arg).then(function(response){
-      // console.log(response)
       $scope.beerList = response;
-      // console.log(response);
     })
   }
   var getBrewery = function(id){
     breweryHomeService.getBrewery(id).then(function(response){
-      console.log(response)
     if (response !== "error") {
       $scope.brewery = response;
       if (response.images.squareLarge){
@@ -27,7 +23,7 @@ angular.module('app')
       $scope.selectedBeer = response.data.data;
       $scope.beerInfo = true;
       $scope.breweryImg = false;
-      // console.log($scope.selectedBeer);
+      console.log($scope.selectedBeer);
     })
   }
 
