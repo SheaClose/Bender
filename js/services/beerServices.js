@@ -11,7 +11,7 @@ angular.module("app")
     else {
       counter++
     }
-    return $https({
+    return $http({
         method: "GET"
       , url: baseUrl + "beers/?p=" + counter + "&" + apiKey
     }).then(function(response){
