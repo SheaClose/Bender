@@ -1,14 +1,46 @@
 <nav-bar></nav-bar>
-<div class="container">
-<h1>Map Page</h1>
-<div class="container">
+<style media="screen">
+  .angular-google-map-container { height: 550px;   margin-top: 35px; overflow: auto
+  }
+[ng-click]{
+  cursor: pointer;
+}
+.red {
+    background-color: red;
+}
+</style>
+<div class="container-fluid" ng-controller="mapCtrl">
+
   <div class="row">
-    <div class="col-sm-12 col-md-3 col-lg-3">
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    <div ng-if='mapRefresh' class="col-sm-3 col-md-3 col-lg-3 angular-google-map-container">
+
+      <ul ng-repeat="brewery in markerList" ng-click="goToBreweryPage(brewery.bId)">
+        <div
+          ng-class="{red: hover}"
+          ng-mouseenter="hover = true"
+          ng-mouseleave="hover = false">
+          <li>Brewery: {{brewery.name}}</li>
+          <li>Distance: {{brewery.distance}}mi</li>
+          <hr>
+        </div>
+      </ul>
+
     </div>
-    <div class="col-sm-12 col-md-8 col-lg-8 pull-right">
-<img  src="http://cdn.shopify.com/s/files/1/0855/0368/files/FrankfortParking2_1024x1024.png?15173412720719867688" alt="" />
+    <div class="col-sm-8 col-md-8 col-lg-8 pull-right">
+      <ui-gmap-google-map ng-if='mapRefresh' center='map.center' zoom='map.zoom'>
+        <!-- Home Marker -->
+        <ui-gmap-marker options="homeMarker.options" coords="homeMarker.coords"  idkey="homeMarker.id">
+        </ui-gmap-marker>
+        <!--  Array of local breweries-->
+        <ui-gmap-marker ng-repeat="point in markerList" coords="point.coords"  idkey="point.id">
+          <ui-gmap-window isIconVisibleOnClick="true">
+              {{point.message}}
+          </ui-gmap-window>
+        </ui-gmap-marker>
+        <!-- <ui-gmap-marker idKey="1" coords='marker.coords'> </ui-gmap-marker>
+         <marker ng-repeat="marker in markerList" coords='marker'></marker>
+      </ui-gmap-google-map> -->
     </div>
   </div>
-</div>
+
 </div>
