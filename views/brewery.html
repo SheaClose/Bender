@@ -20,7 +20,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-3 col-md-3 col-lg-3 breweryPic">
-      <ul ng-class="red" ng-repeat="beer in beerList">
+      <ul ng-class="red" ng-repeat="beer in beerList" ng-click="selectABeer(beer.id)">
         <div
           ng-class="{red: hover}"
           ng-mouseenter="hover = true"
@@ -35,5 +35,8 @@
     </ul>
     </div>
     <div class="col-sm-8 col-md-8 col-lg-8 pull-right breweryPic">
-        <img ng-if="{{breweryInfo}}" ng-src="{{brewery.images.squareLarge}}" alt="" />
+        <img ng-if="breweryImg" ng-src="{{brewery.images.squareLarge}}" alt="" />
+        <div ng-if="beerInfo" class="">
+          <h1>{{selectedBeer.description}}</h1>
+        </div>
     </div>
