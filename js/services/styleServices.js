@@ -11,7 +11,7 @@ angular.module("app")
     else {
       counter++
     }
-    return $http({
+    return $https({
         method: "GET"
       , url: baseUrl + "styles/?" + apiKey
     }).then(function(response){
