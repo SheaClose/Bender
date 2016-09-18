@@ -1,7 +1,6 @@
 angular.module("app")
 .controller("mapCtrl", function($scope, $state, $stateParams, mapService){
-  //prevents map from showing up until information is obtained.
-  $scope.mapRefresh = false;
+  //prevents map from showing up until information is obtained.  $scope.mapRefresh = false;
   //array to store marker information in.
   $scope.markerList=[];
   //turns on map when all data has been collected
@@ -10,9 +9,6 @@ angular.module("app")
   };
   //obtains geolocation of the user in order to populate map with local breweries.
   $scope.launch = function() {
-    function error(err){
-      alert("Please input Zipcode to locate local breweries.")
-    }
     function success(pos){
       var userLat = "";
       var userLng = "";
@@ -35,13 +31,14 @@ angular.module("app")
       }
       $scope.getBreweryByLoc(userLat, userLng);
     }
-    navigator.geolocation.getCurrentPosition(success, error)
+    navigator.geolocation.getCurrentPosition(success)
   }
 //http request for breweries based on geolaction info.
   $scope.getBreweryByLoc = function (lat, long) {
-    mapService.getBreweryByLoc(lat, long).then(function(response){
+    mapService.getBreweryByLoc(lat, long)
+    .then(function(response){
+      console.log(response)
       $scope.localbreweries = response;
-      var breweryObj = {};
       for (var i = 0; i < response.length; i++){
         breweryObj = {
           coords: {
