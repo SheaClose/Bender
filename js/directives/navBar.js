@@ -6,14 +6,19 @@ angular.module('app')
       // mapView <--- map name to go to..
       // geolocation <-- url paramaters
       $scope.searchByZipcode = function(zipCodeInput) {
-        mapService.searchByZipcode(zipCodeInput).then(function(response){
-          console.log(response)
-          var location = {
-            lat: response.lat
-            , lng: response.lng
-          }
-          $state.go("mapView", {"lat": location.lat, "lng": location.lng})
-        })
+        if (zipCodeInput.length !== 5){
+          alert("Please input valid Zip Code.")
+        }
+        else {
+          mapService.searchByZipcode(zipCodeInput).then(function(response){
+            console.log(response)
+            var location = {
+              lat: response.lat
+              , lng: response.lng
+            }
+            $state.go("mapView", {"lat": location.lat, "lng": location.lng})
+          })
+        }
       }
     }
   }
