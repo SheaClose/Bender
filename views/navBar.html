@@ -1,4 +1,10 @@
-<nav class="navbar navbar-inverse navbar-default form-inline form-control">
+<style media="screen">
+  .submit-button{
+    background-color: rgb(75, 75, 75);
+    border-color: black;
+  }
+</style>
+<nav class="navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -9,7 +15,7 @@
       <div class="form-group">
         <input ng-model="zipCodeInput" type="text" class="form-control" placeholder="Find by Zipcode">
       </div>
-      <a type="submit" class="btn btn-default" ng-click="searchByZipcode(zipCodeInput)">Submit</a>
+      <a type="submit" class="btn btn-primary submit-button" ng-click="searchByZipcode(zipCodeInput)">Submit</a>
 
     </form>
     <!-- Collect the nav links, forms, and other content for toggling -->
