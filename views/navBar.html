@@ -13,9 +13,12 @@
 
     <form class="navbar-form navbar-left">
       <div class="form-group">
-        <input ng-model="zipCodeInput" type="text" class="form-control" placeholder="Find by Zipcode">
+        <form  action="index.html" method="post">
+          <input ng-keyup="$event.keyCode == 13 && searchByZipcode(zipCodeInput)" ng-model="zipCodeInput" type="text" class="form-control" placeholder="Find by Zipcode">
+          <a type="submit" class="btn btn-primary submit-button" ng-click="searchByZipcode(zipCodeInput)">Submit</a>
+        </form>
       </div>
-      <a type="submit" class="btn btn-primary submit-button" ng-click="searchByZipcode(zipCodeInput)">Submit</a>
+
 
     </form>
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -23,8 +26,8 @@
       <ul class="nav navbar-nav">
         <li><a ui-sref="mapView">Browse By Area</a></li>
         <li><a ui-sref="browseBeers">Browse Beers</a></li>
-        <li><a ui-sref="browseBreweries">Browse Breweries</a></li>
-        <li><a ui-sref="browseBeerStyles"> Browse Styles    </a></li>
+        <!-- <li><a ui-sref="browseBreweries">Browse Breweries</a></li>
+        <li><a ui-sref="browseBeerStyles"> Browse Styles    </a></li> -->
       </ul>
 
     </div><!-- /.navbar-collapse -->

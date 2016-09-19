@@ -1,86 +1,71 @@
 <nav-Bar></nav-Bar>
 <style media="screen">
+body {
+  background-color: #222222;
+  max-height: 650px
+}
+.red {
+    background-color: #EDAC3F;
+    border-radius: 10px;
+}
+.div-body{
+  height: 600px;
+  overflow: auto;
+}
+.beer-Name-Search {
+  height: 33px;
+}
+.card {
+  height: 450px;
+  background-color: rgba(124,137,139, .5);
+  border-radius: 10px;
+  overflow: auto;
+  padding: 3px;
+}
+.card-deck{
+  margin-bottom: 20px;
+}
+.page-search {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+.card-title{
+    text-align: center;
+}
+.card-img-bottom{
+  width: 100%;
+  height: 50px;
+}
 </style>
-<div class="container">
-  <div>
-
-    <!-- beer list -->
+<div class="container-fluid div-body">
+  <div class="page-search">
     <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+      <div class="pull-left">
         <button type="button " name="button" class="btn btn-default" ng-click="getBeers('previousPage')">Prev Page</button>
         <button class="btn btn-default" type="button" name="button" ng-click="getBeers()">Next Page</button>
       </div>
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-right">
-          <input type="form" name="name" placeholder="Search by beer name" value="" ng-model="beerSearch">
+        <div class="pull-right">
+          <input ng-keyup="$event.keyCode == 13 && searchByBeerName(beerSearch)" type="form" class="beer-Name-Search" placeholder="Search by beer name" value="" ng-model="beerSearch">
           <button type="button" name="button" class="btn btn-default" ng-click="searchByBeerName(beerSearch)">Submit</button>
-
-    <!-- {{beers}} -->
-        </div>
       </div>
     </div>
-
-
-
-    <!-- image on landing/ beer list after query -->
-    <div ng-if='beerList'class="row">
-      <div class="" ng-repeat="beer in beers">
-        <div class="beer-Container col-md-3 col-lg-3">
-          <div class="Beer-Name">
-          <h4>Beer Name:  {{beer.name}}</h4>
+  </div>
+  <div class="card-deck-wrapper">
+    <div class="card-deck col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="beer in beers">
+      <div ng-class="{red: hover}"
+      ng-mouseenter="hover = true"
+      ng-mouseleave="hover = false">
+        <div class="card">
+          <div class="card-block">
+            <p class="card-title"><img class="card-img-label" style="background-color: #{{beer.hex}}"/></p>
+            <h3 class="card-title">Beer Name:  {{beer.name}}</h3>
+            <p class="card-title"><b>Beer Color:</b> <br><img class="card-img-bottom" style="background-color: #{{beer.hex}}"/></p>
+            <p class="card-text"><b>Description:</b>  {{beer.shortDesc}}</p>
+            <p class="card-text"><b>ABV:</b>  {{beer.abv}}</p>
           </div>
-          <div class="beer-Description">
-          Description:  {{beer.shortDesc}}
-          <!-- 250 chars MAX -->
-          </div>
-          <div class="abv">
-          ABV:  {{beer.abv}}
-          </div>
-          Beer Color:
-           <div
-            <div style="width: 100px; height: 100px; background-color: #{{beer.hex}}"class="color">
-
-            </div>
-          </div>
-        </div>
-        <hr>
-      </div>
-    </div>
-
-
-
-
-
-
-
-    <div class="row" ng-if="beerInfo">
-      <div class="jumbotron">
-        <img   ng-src="{{searchedBeer.labels.large}}" alt="" />
-        <h1>{{searchedBeer.name}}</h1>
-        <div class=""> {{searchedBeer.description}}
         </div>
       </div>
-      <div ng-if="beerInfo">
-        <div class="">
-          organic? {{searchedBeer.isOrganic}}
-        </div>
-
-        <div class="">
-          style:
-          <br>
-          <ul>
-            <li>abv max:    {{searchedBeer.style.abvMax}}</li>
-            <li>abvMin: {{searchedBeer.style.abvMin}}</li>
-            <li>desc: {{searchedBeer.style.description}}</li>
-            <li>fgMax: {{searchedBeer.style.fgMax}}</li>
-            <li>fgMin: {{searchedBeer.style.fgMin}}</li>
-            <li>ibuMax: {{searchedBeer.style.ibuMax}}</li>
-            <li>srmMax: {{searchedBeer.style.srmMax}}</li>
-            <li>srmMin: {{searchedBeer.style.srmMin}}</li>
-          </ul>
-        </div>
-
-      </div>
-
     </div>
   </div>
 </div>
+<footer-nav></footer-nav>
