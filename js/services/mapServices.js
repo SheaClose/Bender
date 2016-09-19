@@ -11,7 +11,7 @@ angular.module("app")
     var breweryArr = [];
     return $http({
         method: "GET"
-      , url: "https://crossorigin.me/" + beerBaseUrl + lat + "&lng=" + long + "&" + beerApiKey
+      , url: beerBaseUrl + lat + "&lng=" + long + "&" + beerApiKey
     }).then(function(response){
       console.log(response)
       var responseArr = response.data.data;
