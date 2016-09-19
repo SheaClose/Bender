@@ -1,32 +1,55 @@
 <nav-bar></nav-bar>
 <style media="screen">
-  .angular-google-map-container { height: 550px;   margin-top: 35px; overflow: auto
+  .angular-google-map-container { height: 585px;   overflow: auto
   }
 [ng-click]{
   cursor: pointer;
 }
 .red {
-    background-color: red;
+    background-color: #EDAC3F;
+}
+body {
+  background-color: #222222;
+}
+.list-group{
+  min-height: 585px;
+}
+.list-group-item{
+background-color: #7C898B;
+}
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 28px;        // Make inputs at least the height of their button counterpart
+  .box-sizing(border-box); // Makes inputs behave like true block-level elements
 }
 </style>
+
+
+
+
 <div class="container-fluid" ng-controller="mapCtrl">
 
   <div class="row">
-    <div ng-if='mapRefresh' class="col-sm-3 col-md-3 col-lg-3 angular-google-map-container">
 
-      <ul ng-repeat="brewery in markerList" ng-click="goToBreweryPage(brewery.bId)">
+    <div ng-if='mapRefresh' class="col-sm-3 col-md-3 col-lg-3 angular-google-map-container list-group">
+      <div class="row">
+
+      </div>
+      <input style="position: sticky;" class="input-block-level" type="form" placeholder="Search brewery" ng-model="brewerySearch">
+      <ul class="list-group-item list-group-item-action" ng-repeat="brewery in markerList | filter: brewerySearch" ng-click="goToBreweryPage(brewery.bId)">
         <div
           ng-class="{red: hover}"
           ng-mouseenter="hover = true"
           ng-mouseleave="hover = false">
-          <li>Brewery: {{brewery.name}}</li>
-          <li>Distance: {{brewery.distance}}mi</li>
-          <hr>
+          <li class="list-group-item-heading">Brewery: {{brewery.name}}</li>
+          <li class="list-group-item-text">Distance: {{brewery.distance}}mi</li>
+
         </div>
       </ul>
 
     </div>
-    <div class="col-sm-8 col-md-8 col-lg-8 pull-right">
+    <div>
       <ui-gmap-google-map ng-if='mapRefresh' center='map.center' zoom='map.zoom'>
         <!-- Home Marker -->
         <ui-gmap-marker options="homeMarker.options" coords="homeMarker.coords"  idkey="homeMarker.id">
@@ -44,3 +67,4 @@
   </div>
 
 </div>
+<footer-nav></footer-nav>

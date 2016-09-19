@@ -1,70 +1,90 @@
 <nav-bar></nav-bar>
 <style media="screen">
-.breweryPic { height: 550px;   margin-top: 35px; overflow: auto
-}
 [ng-click]{
-cursor: pointer;
+  cursor: pointer;
 }
 .red {
-background-color: red;
+    background-color: #EDAC3F;
 }
-.header {
-text-align: center;
+body {
+  background-color: #222222;
+  max-height: 550px
 }
-
+.list-group-item{
+background-color: #7C898B;
+min-height: 585px;
+}
+.breweryPic{
+  overflow: auto;
+  max-height: 585px;
+}
+.beer-name {
+  height: 277px;
+  padding-top: -25px;
+  overflow: auto;
+  text-align: center;
+}
+.beer-desc {
+  height: 277px;
+  overflow: auto;
+}
 </style>
-<div class="header">
-  <h1>{{brewery.nameShortDisplay}}</h1>
-</div>
+
+<!-- <div class="header">
+<h1>{{brewery.nameShortDisplay}}</h1>
+</div> -->
 
 
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-3 col-md-3 col-lg-3 breweryPic">
+  <div class="col-sm-3 col-md-3 col-lg-3 breweryPic list-group">
+    <div class="list-group-item">
       <ul ng-class="red" ng-repeat="beer in beerList" ng-click="selectABeer(beer.id)">
-      <div
-      ng-class="{red: hover}"
-      ng-mouseenter="hover = true"
-      ng-mouseleave="hover = false">
-        <li>Name: {{beer.name}}</li>
-        <li>Style: {{beer.style.shortName}}</li>
-  <!-- <li>Description: {{beer.style.description}}</li> -->
-
-        <li>ABV Range: {{beer.style.abvMin}}-{{beer.style.abvMax}}</li>
+        <div
+        ng-class="{red: hover}"
+        ng-mouseenter="hover = true"
+        ng-mouseleave="hover = false">
+          <li class="list-group-item-heading">Name: {{beer.name}}</li>
+          <li class="list-group-item-text">Style: {{beer.style.shortName}}</li>
+          <li class="list-group-item-text">ABV Range: {{beer.style.abvMin}}-{{beer.style.abvMax}}</li>
+        </div>
         <hr>
-
-      </div>
       </ul>
     </div>
-    <div class="col-sm-8 col-md-8 col-lg-8 pull-right breweryPic">
-      <img ng-if="breweryImg" ng-src="{{brewery.images.squareLarge}}" alt="" />
-      <div ng-if="beerInfo" class="jumbotron">
-        <img   ng-src="{{selectedBeer.labels.large}}" alt="" />
-        <h1>{{selectedBeer.name}}</h1>
-        <div class=""> {{selectedBeer.description}}
-        </div>
+  </div>
+
+
+  <div class="col-sm-9 col-md-9 col-lg-9" style="object-fit: cover">
+    <img ng-if="breweryImg" class="jumbotron" style="
+    background-image: url({{brewery.images.squareLarge}});
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 585px;
+    width: 100%"
+    />
+
+
+    <div ng-if="beerInfo" class="jumbotron beer-name">
+
+      <h3>{{selectedBeer.name}}<h3>
+      <p>{{selectedBeer.description}}</p>
+        <img ng-src="{{selectedBeer.labels.medium}}" alt="" />
       </div>
-      <div ng-if="beerInfo">
-        <div class="">
-          organic? {{selectedBeer.isOrganic}}
-        </div>
-
-        <div class="">
-          style:
-          <br>
-          <ul>
-            <li>abv max:    {{selectedBeer.style.abvMax}}</li>
-            <li>abvMin: {{selectedBeer.style.abvMin}}</li>
-            <li>desc: {{selectedBeer.style.description}}</li>
-            <li>fgMax: {{selectedBeer.style.fgMax}}</li>
-            <li>fgMin: {{selectedBeer.style.fgMin}}</li>
-            <li>ibuMax: {{selectedBeer.style.ibuMax}}</li>
-            <li>srmMax: {{selectedBeer.style.srmMax}}</li>
-            <li>srmMin: {{selectedBeer.style.srmMin}}</li>
-          </ul>
-        </div>
-
+    <div ng-if="beerInfo">
+      <div class="jumbotron beer-desc ">
+        Style guidlines:
+        <br>
+        <ul>
+          <li ng-if="selectedBeer.style.category.name"><b>Style:</b> {{selectedBeer.style.category.name}}</li>
+          <li ng-if="selectedBeer.foodPairings"><b>Food Pairings:</b> {{selectedBeer.foodPairings}}</li>
+          <li ng-if="selectedBeer.style.abvMin"><b>ABV range:</b> {{selectedBeer.style.abvMin}} - {{selectedBeer.style.abvMax}}</li>
+          <li ng-if="selectedBeer.style.description"><b>Style description:</b> {{selectedBeer.style.description}}</li>
+          <li ng-if="selectedBeer.style.fgMin"><b>Final gravity:</b> {{selectedBeer.style.fgMin}} - {{selectedBeer.style.fgMax}}</li>
+          <li ng-if="selectedBeer.style.ibuMin"><b>IBU's:</b> {{selectedBeer.style.ibuMin}} - {{selectedBeer.style.ibuMax}}</li>
+          <li ng-if="selectedBeer.style.srmMin"><b>SRM range:</b> {{selectedBeer.style.srmMin}} - {{selectedBeer.style.srmMax}}</li>
+        </ul>
       </div>
     </div>
   </div>
 </div>
+<footer-nav></footer-nav>

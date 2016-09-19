@@ -1,7 +1,7 @@
 angular.module("app")
 .service("mapService", function($http){
 //basic information for use by .getBreweryByLoc
-  var beerBaseUrl =  "https://api.brewerydb.com/v2/search/geo/point?lat=";
+  var beerBaseUrl =  "https://crossorigin.me/https://api.brewerydb.com/v2/search/geo/point?lat=";
   var beerApiKey = "key=e6dd4ca543ecb9e65e170def16b95035"
   var beerPageCounter = 0;
 
