@@ -50,6 +50,7 @@ angular.module("app")
           , distance: response[i].distance
           , name: response[i].brewery.name
           , bId: response[i].breweryId
+          , options: { title: 'The White House' }
         }
         $scope.markerList.push(breweryObj);
         breweryObj = {};
