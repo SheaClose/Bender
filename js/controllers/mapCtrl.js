@@ -37,7 +37,7 @@ angular.module("app")
   $scope.getBreweryByLoc = function (lat, long) {
     mapService.getBreweryByLoc(lat, long)
     .then(function(response){
-      console.log(response)
+      // console.log(response)
       $scope.localbreweries = response;
       for (var i = 0; i < response.length; i++){
         breweryObj = {
@@ -55,10 +55,12 @@ angular.module("app")
         breweryObj = {};
       }
       $scope.refresh()
+      console.log($scope.markerList)
     })
   }
 // changes page to brewery passing in brewery id
   $scope.goToBreweryPage = function(arg){
+    console.log(arg)
     $state.go("brewery", {bId: arg})
   }
 $scope.launch();

@@ -1,6 +1,6 @@
 <nav-bar></nav-bar>
 <style media="screen">
-  .angular-google-map-container { height: 650px;   overflow: auto
+  .angular-google-map-container { height: 585px;   overflow: auto
   }
 [ng-click]{
   cursor: pointer;
@@ -10,9 +10,10 @@
 }
 body {
   background-color: #222222;
+  max-height: 650px
 }
 .list-group{
-  min-height: 650px;
+  max-height: 585px;
 }
 .list-group-item{
 background-color: #7C898B;
@@ -56,8 +57,10 @@ background-color: #7C898B;
         </ui-gmap-marker>
         <!--  Array of local breweries-->
         <ui-gmap-marker ng-repeat="point in markerList" coords="point.coords"  idkey="point.id">
-          <ui-gmap-window isIconVisibleOnClick="true">
-              {{point.message}}
+          <ui-gmap-window isIconVisibleOnClick="true" >
+            <div class="">
+              <a href="/#/brewery/{{point.bId}}">{{point.message}}</a>
+            </div>
           </ui-gmap-window>
         </ui-gmap-marker>
         <!-- <ui-gmap-marker idKey="1" coords='marker.coords'> </ui-gmap-marker>
