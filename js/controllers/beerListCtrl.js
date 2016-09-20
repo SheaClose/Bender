@@ -6,7 +6,6 @@ angular.module("app")
         $scope.beers = response;
       })
     }
-
     $scope.getStyles = function (arg) {
       styleServices.getStyles(arg).then(function(response){
         $scope.styles = response;
@@ -17,8 +16,6 @@ angular.module("app")
         $scope.beers = response;
       })
     }
-
-
   $scope.getBeers();
   $scope.getStyles();
 })

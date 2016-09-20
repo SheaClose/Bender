@@ -26,29 +26,22 @@ background-color: #7C898B;
 }
 </style>
 
-
-
-
 <div class="container-fluid" ng-controller="mapCtrl">
-
   <div class="row">
-
     <div ng-if='mapRefresh' class="col-sm-3 col-md-3 col-lg-3 angular-google-map-container list-group">
       <div class="row">
+        <input style="position: sticky;" class="input-block-level" type="form" placeholder="Search brewery" ng-model="brewerySearch">
+        <ul class="list-group-item list-group-item-action" ng-repeat="brewery in markerList | filter: brewerySearch" ng-click="goToBreweryPage(brewery.bId)">
+          <div
+            ng-class="{red: hover}"
+            ng-mouseenter="hover = true"
+            ng-mouseleave="hover = false">
+            <li class="list-group-item-heading">Brewery: {{brewery.name}}</li>
+            <li class="list-group-item-text">Distance: {{brewery.distance}}mi</li>
 
+          </div>
+        </ul>
       </div>
-      <input style="position: sticky;" class="input-block-level" type="form" placeholder="Search brewery" ng-model="brewerySearch">
-      <ul class="list-group-item list-group-item-action" ng-repeat="brewery in markerList | filter: brewerySearch" ng-click="goToBreweryPage(brewery.bId)">
-        <div
-          ng-class="{red: hover}"
-          ng-mouseenter="hover = true"
-          ng-mouseleave="hover = false">
-          <li class="list-group-item-heading">Brewery: {{brewery.name}}</li>
-          <li class="list-group-item-text">Distance: {{brewery.distance}}mi</li>
-
-        </div>
-      </ul>
-
     </div>
     <div>
       <ui-gmap-google-map ng-if='mapRefresh' center='map.center' zoom='map.zoom'>
@@ -63,11 +56,7 @@ background-color: #7C898B;
             </div>
           </ui-gmap-window>
         </ui-gmap-marker>
-        <!-- <ui-gmap-marker idKey="1" coords='marker.coords'> </ui-gmap-marker>
-         <marker ng-repeat="marker in markerList" coords='marker'></marker>
-      </ui-gmap-google-map> -->
     </div>
   </div>
-
 </div>
-<footer-nav></footer-nav>
+<footer-nav>bender &copy;</footer-nav>

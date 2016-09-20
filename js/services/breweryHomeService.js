@@ -10,21 +10,19 @@ angular.module("app")
       if (response.data.data){
       var beerArr = response.data.data;
       var beerList = [];
-      for (var i = 0; i < beerArr.length; i++){
-        if (beerArr[i]["style"]){
-          beerList.push(beerArr[i])
+        for (var i = 0; i < beerArr.length; i++){
+          if (beerArr[i]["style"]){
+            beerList.push(beerArr[i])
+          }
         }
-      }
       return beerList;
-    }
-      // console.log(beerList);
+      }
       alert("No information provided from Brewery")
       return "error";
     })
   }
   this.getBrewery = function(id){
     return $http.get(beerBaseUrl + id + "?" + beerApiKey).then(function(response){
-      // console.log(response.data.data)
       return response.data.data;
     })
   }

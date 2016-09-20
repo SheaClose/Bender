@@ -2,7 +2,7 @@ angular.module("app", ['ui.router', 'uiGmapgoogle-maps'])
 .config(function($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider){
   uiGmapGoogleMapApiProvider.configure({
       key: 'AIzaSyCIdWvV8D7BDxSAOzFP8A5lJUrVoENki30',
-      v: '3.20', //defaults to latest 3.X anyhow
+      v: '3.20', 
       libraries: 'weather,geometry,visualization'
   });
   $urlRouterProvider.otherwise("/");
@@ -13,9 +13,6 @@ angular.module("app", ['ui.router', 'uiGmapgoogle-maps'])
   })
   .state("mapView", {
       url: "/map/:lat/:lng"
-  //   , params: [
-  //    'lat', 'long'
-  // ]
     , templateUrl: "./views/map.html"
   })
   .state("browseBeers", {

@@ -3,8 +3,6 @@ angular.module('app')
   return {
     templateUrl: "./views/navBar.html"
     , controller: function($scope, $state, mapService){
-      // mapView <--- map name to go to..
-      // geolocation <-- url paramaters
       $scope.searchByZipcode = function(zipCodeInput) {
         if (zipCodeInput.length !== 5){
           alert("Please input valid Zip Code.")

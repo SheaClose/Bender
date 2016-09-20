@@ -23,10 +23,8 @@ angular.module('app')
       $scope.selectedBeer = response.data.data;
       $scope.beerInfo = true;
       $scope.breweryImg = false;
-      console.log($scope.selectedBeer);
     })
   }
-
   getBreweryInfo($state.params.bId);
   getBrewery($state.params.bId);
 })
