@@ -1,7 +1,7 @@
 angular.module("app")
 .service("mapService", function($http){
 //basic information for use by .getBreweryByLoc
-  var beerBaseUrl =  "https://crossorigin.me/https://api.brewerydb.com/v2/search/geo/point?lat=";
+  var beerBaseUrl =  "https://api.brewerydb.com/v2/search/geo/point?lat=";
   var beerApiKey = "radius=50&key=e6dd4ca543ecb9e65e170def16b95035"
 
 //obtains local breweries and verifies the information prior to passing along to MapCtrl
@@ -21,7 +21,7 @@ angular.module("app")
     })
   };
   this.searchByZipcode = function(zipCodeInput){
-    return $http.get("https://crossorigin.me/https://maps.googleapis.com/maps/api/geocode/json?address=" + zipCodeInput + "&key=AIzaSyAXQB6_1o2TlMK7coZPgfuVDAdxZtPiv9c").then(function(response){
+    return $http.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + zipCodeInput + "&key=AIzaSyAXQB6_1o2TlMK7coZPgfuVDAdxZtPiv9c").then(function(response){
       return response.data.results[0].geometry.location
     })
   }
