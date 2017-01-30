@@ -1,7 +1,7 @@
 angular.module("app")
 .service("breweryHomeService", function($http){
-  var baseUrl = "https://crossorigin.me/https://api.brewerydb.com/v2/"
-  var beerBaseUrl =  "https://crossorigin.me/https://api.brewerydb.com/v2/brewery/";
+  var baseUrl = "https://api.brewerydb.com/v2/"
+  var beerBaseUrl =  "https://api.brewerydb.com/v2/brewery/";
   var beerApiKey = "key=e6dd4ca543ecb9e65e170def16b95035"
   var beersUrl = "/beers?";
 
